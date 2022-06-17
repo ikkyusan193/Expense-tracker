@@ -1,2 +1,2 @@
-# Expense-tracker
-Mobile development application #Project 1
+# Expense-tracker 
+Mobile Application Programming (P1)
