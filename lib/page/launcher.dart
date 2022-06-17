@@ -26,6 +26,7 @@ class _LauncherState extends State<Launcher> {
   int index = 0;
   final navigationKey = GlobalKey<CurvedNavigationBarState>();
 
+  /// all the screens
   final screens = [
     const Home(),
     const TransactionPage(),

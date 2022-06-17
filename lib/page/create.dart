@@ -15,9 +15,14 @@ class CreateTransactionPage extends StatefulWidget {
 
 class _CreateTransactionPageState extends State<CreateTransactionPage> {
 
-  //
+  /// Query controller = instance to connect us to DB
   final QueryController _query = QueryController();
 
+  /// GlobalKey and TextController
+  /// used for:
+  /// 1. validating user input (null check, format check)
+  /// 2. Keyboard custom (for cost we use number keyboard, and for others we use normal keyboard)
+  /// 3. Text forms, Number forms (so that user can't put number on text field)
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
   final _costController = TextEditingController();
@@ -122,6 +127,8 @@ class _CreateTransactionPageState extends State<CreateTransactionPage> {
     );
   }
 
+  /// createForm functions used to create a customize text form
+  /// we only parse in controller, keyboardType, labelText and Icon
   Widget createForm(controller, keyboardType, labelText, String validatorText,Icon icon){
     if (validatorText.isNotEmpty){
       return TextFormField(
@@ -159,7 +166,8 @@ class _CreateTransactionPageState extends State<CreateTransactionPage> {
       );
     }
   }
-
+  /// Save functions
+  /// add transactions by getting value from each TextFormField
   void save() async {
     int epoch = DateTime.now().microsecondsSinceEpoch; // the order by ascending
     _query.add(Expense(
